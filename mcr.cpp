@@ -30,24 +30,30 @@ int main() {
             cout << "Player 1: ";
         else
             cout << "Player 2: ";
-        cout << "Which cell to mark? i[1..3], j[1..3]: ";
+        
+        cout << "Which cell to mark? i[0..2], j[0..2]: ";
         cin >> i >> j;
+
+        // check input value
+        if (0 > i > 2 || 0 > j > 2 || game[i][j] != " ")
+            n = n--;
+            cout << "invalid input"
+            continue;
+        
         if (turn == false)
             game[i][j] = 'X';
         else
             game[i][j] = 'O';
+
+        // check win and output
         if (isWin(game)) {
             cout << "Win!" << endl;
-            break; // need to terminate the problem
+            cout << game[0][0] << " " << game[0][1] << " " << game[0][2] << endl;
+            cout << game[1][0] << " " << game[1][1] << " " << game[1][2] << endl;
+            cout << game[2][0] << " " << game[2][1] << " " << game[2][2] << endl;
+            return 0; // need to terminate the problem
         }
     }
-    if (i == 3) // all celles with i=0 to 2 have been inputted above but no winner yet
-        cout << "Tie!" << endl;
-
-    // show the game to console
-    cout << game[0][0] << " " << game[0][1] << " " << game[0][2] << endl;
-    cout << game[1][0] << " " << game[1][1] << " " << game[1][2] << endl;
-    cout << game[2][0] << " " << game[2][1] << " " << game[2][2] << endl;
-    return 0;
+    cout << "Tie!" << endl;
 }
 ```
