@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <iostream>
 #include <string>
+using namespace std;
 
 bool isWin(char game[3][3]) {
     bool win = false;
